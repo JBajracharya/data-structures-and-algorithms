@@ -13,9 +13,10 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
-  return input.reduce((accumulator, currentValue) => {
+  let output = input.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.filter(number => number === target).length;
   }, 0);
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,6 +31,10 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  let output = input.flat(Infinity).reduce((accu, curr) => {
+    return accu + curr;
+  })
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +51,10 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  let output = input.map(val => {
+    return val.filter((element) => (typeof element === 'number') && (element % 5 === 0)).map(element => Math.pow(2, element));
+  });
+return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,6 +121,11 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  let output = data.filter(value => (value.gender === 'male' || value.gender ==='female')).map(value => value.name).join(' and ');
+  // let output = filteredElem.reduce((accumulator, currentValue) => accumulator.push(currentValue.name));
+  // return output.join(' and ');
+  return output;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,6 +136,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  let shortest = data.reduce((accu, curr) => accu.height < curr.height ? curr: accu);
+  return shortest.name;
 };
 
 /* ------------------------------------------------------------------------------------------------
