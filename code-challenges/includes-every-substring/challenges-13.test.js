@@ -23,6 +23,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
+  return arr.filter(elem => elem.includes(`:)`));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,6 +36,8 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  const regex = /[ ()-]/g;
+  return arr.map(element => element.replace(regex, ''));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,6 +50,11 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  let oddValue = '';
+  for(let i = 1; i < str.length; i+=2){
+    oddValue += str.charAt(i);
+  }
+  return oddValue;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,6 +65,13 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  let flag = true;
+  arr.forEach(element => {
+    if(!element.includes(`:)`)){
+      flag = false;
+    }
+  });
+  return flag;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,6 +82,8 @@ Write a function named findAnything that takes in an array of strings, along wit
 
 const findAnything = (arr, target) => {
   // Solution code here...
+  let targetArray = arr.filter(str => str.includes(target));
+  return targetArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,6 +94,7 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  return arr.every(element => element.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,6 +111,11 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
   // Solution code here...
+  let result =[];
+  arr.forEach(elem => {
+    result.push(elem.filter(element => !element.includes('Brook')));
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
