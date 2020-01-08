@@ -11,6 +11,7 @@ Instead of creating a new array which would have been easier to do, we reversed 
 
 ## Solution
 <!-- Embedded whiteboard image -->
-![Image](Image from iOS.jpg)
+![Image](../assets/shiftArray.jpg)
+
 
 
