@@ -12,6 +12,7 @@ public class BinarySearch {
                 firstIndex = midpointIndex + 1;
             } else return midpointIndex;
         }
+
         return -1;
     }
 }
