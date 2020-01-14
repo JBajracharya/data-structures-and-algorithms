@@ -5,7 +5,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LinkedListTest {
-    @Test public void testLinkedList() {
+    @Test public void testEmptyList () {
+        LinkedList list = new LinkedList();
+        assertNull("Expected null", list.head);
+
+    }
+
+    @Test public void testInsertAndPrintValues() {
         LinkedList  list = new LinkedList();
         list.insert(10);
         list.insert(30);
@@ -13,7 +19,9 @@ public class LinkedListTest {
         list.insert(2);
         list.insert(31);
 
-        list.PrintValues();
+        String expected = "{31}->{2}->{13}->{30}->{10}->NULL";
+        String actual = list.printValues();
+        assertEquals(expected, actual);
     }
 
     @Test public void testIncludesValue() {
@@ -29,6 +37,25 @@ public class LinkedListTest {
         System.out.println("expected2 = " + list.includes(input1));
         assertTrue( "Expected true",list.includes(input1));
         assertFalse("Expected false", list.includes(input2));
+
+    }
+
+    @Test public void testHead() {
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(30);
+        list.insert(40);
+
+        assertEquals("Expected true", 40, list.head.value);
+    }
+
+    @Test public void testValueExists() {
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(30);
+        list.insert(40);
+
+        assertFalse("expected: false", list.includes(50));
 
     }
 }
