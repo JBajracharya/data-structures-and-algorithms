@@ -3,20 +3,13 @@ package code401challenges.linkedList;
 public class LinkedList {
     Node head;
 
+    // insert new node at the beginning of the node.
     public void insert( int value) {
-        Node node = new Node();
-        node.value = value;
-        node.next = null;
-
-        if(head == null) {
-            head = node;
+        if(this.head == null) {
+            this.head = new Node(value);
+            this.head.next = null;
         } else {
-            Node currentNode = head;
-
-            while(currentNode.next != null) {
-                currentNode = currentNode.next;
-            }
-            currentNode.next = node;
+            this.head = new Node(value, this.head);
         }
     }
 
@@ -31,7 +24,7 @@ public class LinkedList {
         return false;
     }
 
-    public String PrintValues() {
+    public String printValues() {
         Node currentNode = head;
         String listValues = "";
         while (currentNode.next != null) {
