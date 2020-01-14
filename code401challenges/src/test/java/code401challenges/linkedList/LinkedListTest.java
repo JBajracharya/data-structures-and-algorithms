@@ -58,4 +58,32 @@ public class LinkedListTest {
         assertFalse("expected: false", list.includes(50));
 
     }
+
+    ////////////////////// Challenge 6 /////////////////////////////
+    @Test public void testAppendToLinkList(){
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(30);
+        list.insert(40);
+        list.append(55);
+        list.append(33);
+        String expected = "{40}->{30}->{10}->{55}->{33}->NULL";
+        String actual = list.printValues();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test public void testInsertBefore (){
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(30);
+        list.insert(40);
+        list.append(55);
+        list.insertBefore(55, 83);
+
+        String expected = "{40}->{30}->{10}->{83}->{55}->NULL";
+        String actual = list.printValues();
+
+        assertEquals(expected, actual);
+    }
 }
