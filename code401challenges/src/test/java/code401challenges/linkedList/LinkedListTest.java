@@ -99,4 +99,15 @@ public class LinkedListTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test public void testKthFromEnd() {
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(30);
+        list.insert(13);
+        list.insert(2);
+        list.insert(31);
+        list.toString();
+        System.out.println("111111  " + list.kthFromEnd(6));
+    }
 }
