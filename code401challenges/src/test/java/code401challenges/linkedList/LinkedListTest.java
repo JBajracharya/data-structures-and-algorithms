@@ -86,4 +86,17 @@ public class LinkedListTest {
 
         assertEquals(expected, actual);
     }
+    @Test public void testInsertAfter (){
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(30);
+        list.insert(40);
+        list.append(55);
+        list.insertAfter(55, 83);
+
+        String expected = "{40}->{30}->{10}->{55}->{83}->NULL";
+        String actual = list.toString();
+
+        assertEquals(expected, actual);
+    }
 }
