@@ -3,7 +3,8 @@ Create a linked list and add several method to the linked list
 
 
 ## Challenge Description
-Create methods like insert, includes, toString, append, insertBefore, insertAfter
+Create methods like insert, includes, toString, append, insertBefore, insertAfter, value at index
+starting at the end.
 
 
 ## Approach & Efficiency
@@ -16,3 +17,5 @@ While looping in most of the method current node is set to next node to iterate 
 <!-- Embedded whiteboard image -->
 
 ![White Board image](../assets/linkedList.jpg);
+![White Board image](../assets/ll-kth-fromEnd.jpg);
+

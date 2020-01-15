@@ -73,4 +73,33 @@ public class LinkedList {
 
     }
 
+    ////////////////////// Challenge 6 /////////////////////////////
+
+    // node value the the kth position from the end of the list
+    public int kthFromEnd(int positionFromEnd) {
+        int position = getBiginningPos(positionFromEnd);
+        Node currentNode = this.head;
+
+        for (int i = 1; i < position; i++) {
+            currentNode = currentNode.next;
+        }
+        int valueAtKthPos = currentNode.value;
+        return valueAtKthPos;
+    }
+
+    public int getBiginningPos(int positionFromEnd) {
+        Node currentNode = this.head;
+        int counter = 0;
+        while(currentNode != null) {
+            counter++;
+            currentNode = currentNode.next;
+        }
+//        System.out.println("11111" + counter);
+        if(counter < positionFromEnd) {
+            throw new IndexOutOfBoundsException("Index " + positionFromEnd + " is outside linked list range");
+        }
+        int posFromBeginning = counter - positionFromEnd;
+        return posFromBeginning;
+    }
+
 }
