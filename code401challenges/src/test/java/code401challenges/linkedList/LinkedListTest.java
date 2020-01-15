@@ -20,7 +20,7 @@ public class LinkedListTest {
         list.insert(31);
 
         String expected = "{31}->{2}->{13}->{30}->{10}->NULL";
-        String actual = list.printValues();
+        String actual = list.toString();
         assertEquals(expected, actual);
     }
 
@@ -68,7 +68,7 @@ public class LinkedListTest {
         list.append(55);
         list.append(33);
         String expected = "{40}->{30}->{10}->{55}->{33}->NULL";
-        String actual = list.printValues();
+        String actual = list.toString();
 
         assertEquals(expected, actual);
     }
@@ -82,7 +82,7 @@ public class LinkedListTest {
         list.insertBefore(55, 83);
 
         String expected = "{40}->{30}->{10}->{83}->{55}->NULL";
-        String actual = list.printValues();
+        String actual = list.toString();
 
         assertEquals(expected, actual);
     }
