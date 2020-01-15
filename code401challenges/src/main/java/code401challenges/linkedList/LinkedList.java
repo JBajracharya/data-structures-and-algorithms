@@ -63,4 +63,14 @@ public class LinkedList {
         currentNode.next = new Node(newValue, temp);
     }
 
+    public void insertAfter(int value, int newValue) {
+        Node currentNode = this.head;
+        while (currentNode.value != value) {
+            currentNode = currentNode.next;
+        }
+        Node temp = currentNode.next;
+        currentNode.next = new Node(newValue, temp);
+
+    }
+
 }
