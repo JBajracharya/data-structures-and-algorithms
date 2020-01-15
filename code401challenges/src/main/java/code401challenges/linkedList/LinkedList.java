@@ -26,18 +26,17 @@ public class LinkedList {
         return false;
     }
 
-    public String printValues() {
+    public String toString() {
         Node currentNode = head;
         String listValues = "";
-        while (currentNode.next != null) {
+        while (currentNode != null) {
             listValues += "{" + currentNode.value + "}" + "->";
             currentNode = currentNode.next;
         }
-        int lastValue = currentNode.value;
-        currentNode.next = head;
-        System.out.println(listValues + "{" + lastValue + "}" + "->" + "NULL");
 
-        return listValues + "{" + lastValue + "}" + "->" + "NULL";
+        System.out.println(listValues+ "NULL");
+
+        return listValues + "NULL";
     }
 
     ////////////////////// Challenge 6 /////////////////////////////
