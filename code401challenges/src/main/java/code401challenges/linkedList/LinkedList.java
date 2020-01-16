@@ -73,7 +73,7 @@ public class LinkedList {
 
     }
 
-    ////////////////////// Challenge 6 /////////////////////////////
+    ////////////////////// Challenge 7 /////////////////////////////
 
     // node value the the kth position from the end of the list
     public int kthFromEnd(int positionFromEnd) {
@@ -100,6 +100,25 @@ public class LinkedList {
         }
         int posFromBeginning = counter - positionFromEnd;
         return posFromBeginning;
+    }
+
+    ////////////////////// Challenge 7 /////////////////////////////
+    public static LinkedList mergeLists(LinkedList one , LinkedList two) {
+        Node currentNode1 = one.head;
+        Node currentNode2 = two.head;
+
+        while (currentNode1 != null) {
+            Node temp1 = currentNode1.next;
+            Node temp2 = currentNode2;
+
+            currentNode1.next = temp2;
+            currentNode1.next.next = temp1;
+
+            currentNode1 = currentNode1.next.next;
+            currentNode2 = currentNode2.next;
+        }
+
+        return one;
     }
 
 }
