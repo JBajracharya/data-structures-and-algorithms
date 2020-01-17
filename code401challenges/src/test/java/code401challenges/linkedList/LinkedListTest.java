@@ -118,27 +118,44 @@ public class LinkedListTest {
         list.insert(2);
         list.insert(31);
         list.toString();
-        System.out.println("111111  " + list.kthFromEnd(6));
+        System.out.println("111111  " + list.kthFromEnd(3));
     }
 
     @Test
     public void linkedListTest() {
         LinkedList list1 = new LinkedList();
-        list1.insert(10);
-        list1.insert(30);
-        list1.insert(13);
+        list1.insert(5);
+        list1.insert(4);
+        list1.insert(3);
         list1.insert(2);
-        list1.insert(31);
+        list1.insert(1);
 
         LinkedList list2 = new LinkedList();
-        list2.insert(10);
-        list2.insert(30);
-        list2.insert(13);
-        list2.insert(2);
-//        list2.insert(31);
+        list2.insert(9);
+        list2.insert(8);
+        list2.insert(7);
+        list2.insert(6);
 
-        LinkedList.mergeLists(list1, list2);
+        String expected = "{1}->{6}->{2}->{7}->{3}->{8}->{4}->{9}->{5}->NULL";
+        String actual = String.valueOf(LinkedList.mergeLists(list1, list2));
 
+        assertEquals(expected, actual);
+    }
 
+    @Test
+    public void emptySecondLinkedListTest() {
+        LinkedList list1 = new LinkedList();
+        list1.insert(5);
+        list1.insert(4);
+        list1.insert(3);
+        list1.insert(2);
+        list1.insert(1);
+
+        LinkedList list2 = new LinkedList();
+
+        String expected = "{1}->{2}->{3}->{4}->{5}->NULL";
+        String actual = String.valueOf(LinkedList.mergeLists(list1, list2));
+
+        assertEquals(expected, actual);
     }
 }
