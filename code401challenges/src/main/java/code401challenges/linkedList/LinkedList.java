@@ -28,9 +28,9 @@ public class LinkedList {
 
     public String toString() {
         Node currentNode = head;
-        String listValues = "";
+        StringBuilder listValues = new StringBuilder();
         while (currentNode != null) {
-            listValues += "{" + currentNode.value + "}" + "->";
+            listValues.append("{").append(currentNode.value).append("}").append("->");
             currentNode = currentNode.next;
         }
 
@@ -83,8 +83,7 @@ public class LinkedList {
         for (int i = 1; i < position; i++) {
             currentNode = currentNode.next;
         }
-        int valueAtKthPos = currentNode.value;
-        return valueAtKthPos;
+        return currentNode.value;
     }
 
     public int getBiginningPos(int positionFromEnd) {
@@ -98,26 +97,29 @@ public class LinkedList {
         if(counter < positionFromEnd) {
             throw new IndexOutOfBoundsException("Index " + positionFromEnd + " is outside linked list range");
         }
-        int posFromBeginning = counter - positionFromEnd;
-        return posFromBeginning;
+        return counter - positionFromEnd;
     }
 
     ////////////////////// Challenge 7 /////////////////////////////
     public static LinkedList mergeLists(LinkedList one , LinkedList two) {
+        if(one.head == null) {
+            return two;
+        } else if(two.head == null) {
+            return one;
+        }
         Node currentNode1 = one.head;
         Node currentNode2 = two.head;
 
-        while (currentNode1 != null) {
+        while (currentNode1 != null && currentNode2 != null) {
             Node temp1 = currentNode1.next;
-            Node temp2 = currentNode2;
-
-            currentNode1.next = temp2;
-            currentNode1.next.next = temp1;
-
-            currentNode1 = currentNode1.next.next;
-            currentNode2 = currentNode2.next;
+            Node temp2 = currentNode2.next;
+            if(currentNode1.next != null) {
+                currentNode2.next = currentNode1.next;
+            }
+            currentNode1.next = currentNode2;
+            currentNode1 = temp1;
+            currentNode2 = temp2;
         }
-
         return one;
     }
 
