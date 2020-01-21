@@ -74,4 +74,5 @@ public class StackTest {
         assertFalse(stack1.isEmpty());
         assertTrue(stack2.isEmpty());
     }
+
 }
