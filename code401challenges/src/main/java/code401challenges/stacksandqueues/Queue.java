@@ -2,26 +2,26 @@ package code401challenges.stacksandqueues;
 
 import java.util.NoSuchElementException;
 
-public class Queue {
-    Node front;
-    Node rear;
+public class Queue<T> {
+    Node<T> front;
+    Node<T> rear;
 
-    public void enqueue(int value) {
+    public void enqueue(T value) {
         if(this.front == null) {
-            this.front = new Node(value);
+            this.front = new Node<T>(value);
             this.rear = this.front;
         } else {
-            this.rear.next = new Node(value, null);
+            this.rear.next = new Node<T>(value, null);
             this.rear = this.rear.next;
         }
     }
 
-    public int dequeue() {
+    public T dequeue() {
         if(this.front == null) {
             this.rear = null;
             throw new NoSuchElementException();
         } else {
-            Node temp = front;
+            Node<T> temp = front;
             front = front.next;
             temp.next = null;
             return temp.value;
@@ -29,7 +29,7 @@ public class Queue {
 
     }
 
-    public int peek() {
+    public T peek() {
         return front.value;
     }
 
