@@ -1,11 +1,11 @@
 package code401challenges.stacksandqueues;
 
-public class PseudoQueue {
-    Node top;
-    Stack enqueueStack = new Stack();
-    Stack dequeueStack = new Stack();
+public class PseudoQueue<T> {
+    Node<T> top;
+    Stack<T> enqueueStack = new Stack<T>();
+    Stack<T> dequeueStack = new Stack<T>();
 
-    public void enqueue(int value) {
+    public void enqueue(T value) {
 //        while (!enqueueStack.isEmpty()) {
 //            dequeueStack.push(enqueueStack.pop());
 //        }
@@ -17,11 +17,11 @@ public class PseudoQueue {
 
     }
 
-    public int dequeue() {
+    public T dequeue() {
         while (!enqueueStack.isEmpty()){
             dequeueStack.push(enqueueStack.pop());
         }
-        int result = dequeueStack.pop();
+        T result = dequeueStack.pop();
         while (!dequeueStack.isEmpty()){
             enqueueStack.push(dequeueStack.pop());
         }
@@ -29,7 +29,7 @@ public class PseudoQueue {
     }
 
     public String toString() {
-        Node currentNode = enqueueStack.top;
+        Node<T> currentNode = enqueueStack.top;
         StringBuilder listValues = new StringBuilder();
         while (currentNode != null) {
             listValues.append(currentNode.value).append("->");
