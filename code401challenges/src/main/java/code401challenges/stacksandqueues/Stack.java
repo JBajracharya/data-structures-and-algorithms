@@ -1,19 +1,19 @@
 package code401challenges.stacksandqueues;
 
-public class Stack {
-    Node top;
+public class Stack<T> {
+    Node<T> top;
 
-    public void push(int value) {
+    public void push(T value) {
         if(this.top == null) {
-            this.top = new Node(value);
+            this.top = new Node<T>(value);
             this.top.next = null;
         } else {
-            this.top = new Node(value, this.top);
+            this.top = new Node<T>(value, this.top);
         }
     }
 
-    public int pop () {
-        Node temp = this.top;
+    public T pop () {
+        Node<T> temp = this.top;
         this.top = top.next;
 //        if(top.next  == null){
 //            throw new EmptyStackException();
@@ -23,7 +23,7 @@ public class Stack {
         return temp.value;
     }
 
-    public Node peek() {
+    public Node<T> peek() {
         return top;
     }
 
@@ -32,7 +32,7 @@ public class Stack {
     }
 
     public String toString() {
-        Node currentNode = top;
+        Node<T> currentNode = top;
         StringBuilder listValues = new StringBuilder();
         while (currentNode != null) {
             listValues.append(currentNode.value).append("->");
