@@ -37,8 +37,6 @@ public class BinarySearchTree{
         for (int val: list) {
             if(val == value) {
                 return true;
-            } else {
-                return false;
             }
         }
         return false;
