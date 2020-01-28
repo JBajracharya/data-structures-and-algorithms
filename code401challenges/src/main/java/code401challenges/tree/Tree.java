@@ -3,7 +3,7 @@ package code401challenges.tree;
 //source: https://www.youtube.com/watch?v=81PpYQ0AN_w
 public class Tree {
 
-    Node root;
+    public Node root;
 
     public void insert(int value){
         root = insert(root, value);
