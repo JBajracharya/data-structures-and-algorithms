@@ -1,11 +1,11 @@
 package code401challenges.tree;
 
-public class Node {
-    int data;
-    Node left;
-    Node right;
+public class Node<T> {
+    public T data;
+    public Node<T> left;
+    public Node<T> right;
 
-    public Node(int data){
+    public Node(T data){
         this.data = data;
         this.left = null;
         this.right = null;

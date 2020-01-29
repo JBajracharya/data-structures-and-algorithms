@@ -2,19 +2,22 @@ package code401challenges.tree;
 
 import java.util.ArrayList;
 
-public class BinarySearchTree{
-    ArrayList<Integer> list = new ArrayList<>();
+public class BinarySearchTree<T>{
+    public Node<T> root;
 
-    public ArrayList<Integer> preOrder(Node node) {
+    ArrayList<T> list = new ArrayList<>();
+
+    public ArrayList<T> preOrder(Node<T> node) {
         if(node != null) {
             list.add(node.data);
             preOrder(node.left);
             preOrder(node.right);
         }
+
         return list;
     }
 
-    public ArrayList<Integer> inOrder(Node node) {
+    public ArrayList<T> inOrder(Node<T> node) {
         if(node != null) {
             preOrder(node.left);
             list.add(node.data);
@@ -23,7 +26,7 @@ public class BinarySearchTree{
         return list;
     }
 
-    public ArrayList<Integer> postOrder(Node node) {
+    public ArrayList<T> postOrder(Node<T> node) {
         if(node != null) {
             postOrder(node.left);
             postOrder(node.right);
@@ -32,9 +35,9 @@ public class BinarySearchTree{
         return list;
     }
 
-    public boolean contains( Node root, int value) {
+    public boolean contains( Node<T> root, T value) {
         list =  postOrder(root);
-        for (int val: list) {
+        for (T val: list) {
             if(val == value) {
                 return true;
             }

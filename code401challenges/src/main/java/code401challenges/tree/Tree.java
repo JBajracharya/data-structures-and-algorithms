@@ -1,18 +1,18 @@
 package code401challenges.tree;
 
 //source: https://www.youtube.com/watch?v=81PpYQ0AN_w
-public class Tree {
+public class Tree extends BinarySearchTree<Integer>{
 
-    public Node root;
+    public Node<Integer> root;
 
     public void insert(int value){
         root = insert(root, value);
     }
 
     //overloading a method
-    private Node insert(Node node, int val) {
+    private Node<Integer> insert(Node<Integer> node, int val) {
         if(node == null) {
-            Node root = new Node(val);
+            root = new Node<>(val);
             return root;
         }
         if(val < node.data) {
