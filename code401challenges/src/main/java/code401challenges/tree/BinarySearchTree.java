@@ -44,4 +44,17 @@ public class BinarySearchTree<T>{
         }
         return false;
     }
+
+    public ArrayList<Integer> breadthFirst(Tree tree) {
+
+    }
+
+    public int height(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftHeight = height(node.left);
+            int rightHeight = height(node.right);
+        }
+    }
 }
