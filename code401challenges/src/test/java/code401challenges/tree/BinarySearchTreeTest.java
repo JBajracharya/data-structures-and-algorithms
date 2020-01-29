@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 public class BinarySearchTreeTest {
 
     static Tree tree;
-    static BinarySearchTree searchTree;
+    static BinarySearchTree<Integer> searchTree;
     @Before
     public void initial(){
         tree = new Tree();
-        searchTree = new BinarySearchTree();
+        searchTree = new BinarySearchTree<>();
         tree.insert(20);
         tree.insert(10);
         tree.insert(30);
@@ -26,6 +26,9 @@ public class BinarySearchTreeTest {
     @Test
     public void testPreOrder() {
         ArrayList<Integer> list = searchTree.preOrder(tree.root);
+        for (int a: list) {
+            System.out.println("a = " + a);
+        }
         assertEquals("[20, 10, 5, 15, 16, 30]", list.toString());
     }
 
