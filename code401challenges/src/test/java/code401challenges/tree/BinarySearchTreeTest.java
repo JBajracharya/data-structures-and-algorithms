@@ -51,4 +51,27 @@ public class BinarySearchTreeTest {
         assertFalse(searchTree.contains(tree.root, 50));
 
     }
+
+    @Test
+    public void testBreadthFirst() {
+        System.out.println(" = " + searchTree.breadthFirst(tree.root));
+    }
+
+    @Test
+    public void testMaxValueInTree(){
+        assertEquals(30, searchTree.getMaxValue(tree.root));
+    }
+
+    @Test
+    public  void testNegativeMax(){
+        Tree tree1 = new Tree();
+        tree1.insert(-20);
+        tree1.insert(-10);
+        tree1.insert(-30);
+        tree1.insert(-5);
+        tree1.insert(-15);
+        tree1.insert(-16);
+
+        assertEquals(-5, searchTree.getMaxValue(tree1.root));
+    }
 }
