@@ -1,6 +1,11 @@
 package code401challenges.tree;
 
+import code401challenges.stacksandqueues.Queue;
+
 import java.util.ArrayList;
+
+import static java.lang.Integer.MIN_VALUE;
+//import java.util.Queue;
 
 public class BinarySearchTree<T>{
     public Node<T> root;
@@ -45,16 +50,46 @@ public class BinarySearchTree<T>{
         return false;
     }
 
-    public ArrayList<Integer> breadthFirst(Tree tree) {
-
-    }
-
-    public int height(Node node) {
-        if (node == null) {
-            return 0;
-        } else {
-            int leftHeight = height(node.left);
-            int rightHeight = height(node.right);
+    public ArrayList<T> breadthFirst(Node<T> root) {
+        Queue<Node> queue = new Queue<Node>();
+        if(root != null){
+            queue.enqueue(root);
         }
+        while (!queue.isEmpty()) {
+            Node<T> temp = queue.dequeue();
+            System.out.println("temp = " + temp);
+            list.add(temp.data);
+
+            if(temp.left != null) {
+                queue.enqueue(temp.left);
+            }
+            if (temp.right != null) {
+                queue.enqueue(temp.right);
+            }
+        }
+        return list;
     }
+
+    public int getMaxValue(Node<Integer> root) {
+        Queue<Node> queue = new Queue<Node>();
+        int max = MIN_VALUE;
+        if(root != null){
+            queue.enqueue(root);
+        }
+        while (!queue.isEmpty()) {
+            Node<Integer> temp = queue.dequeue();
+            if(max < temp.data){
+                max = temp.data;
+            }
+
+            if(temp.left != null) {
+                queue.enqueue(temp.left);
+            }
+            if (temp.right != null) {
+                queue.enqueue(temp.right);
+            }
+        }
+        return max;
+    }
+
 }
