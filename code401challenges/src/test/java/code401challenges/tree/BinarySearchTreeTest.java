@@ -9,6 +9,28 @@ import static org.junit.Assert.*;
 
 public class BinarySearchTreeTest {
 
+    @Test
+    public void testEmptyTree(){
+        Tree emptyTree = new Tree();
+        assertNull(emptyTree.root);
+    }
+
+    @Test
+    public void testSingleRootNode(){
+        Tree singleRootNodeTree = new Tree();
+        singleRootNodeTree.root = new Node<>(4);
+        assertNotNull(singleRootNodeTree.root);
+    }
+
+    @Test
+    public void testLeftChildRightChild () {
+        Tree leftRightTree = new Tree();
+        leftRightTree.root = new Node<>(1);
+        leftRightTree.root.left = new Node<>(5);
+        leftRightTree.root.right = new Node<>(8);
+        assertEquals("[1, 5, 8]",leftRightTree.preOrder(leftRightTree.root).toString());
+    }
+
     static Tree tree;
     static BinarySearchTree<Integer> searchTree;
     @Before
