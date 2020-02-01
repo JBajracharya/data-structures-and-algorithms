@@ -71,6 +71,7 @@ public class BinarySearchTree<T>{
     }
 
     public int getMaxValue(Node<Integer> root) {
+        //add exception
         Queue<Node> queue = new Queue<Node>();
         int max = MIN_VALUE;
         if(root != null){
