@@ -76,8 +76,9 @@ public class BinarySearchTreeTest {
 
     @Test
     public void testBreadthFirst() {
-        System.out.println(" = " + searchTree.breadthFirst(tree.root));
+        assertEquals("[20, 10, 30, 5, 15, 16]", searchTree.breadthFirst(tree.root));
     }
+
 
     @Test
     public void testMaxValueInTree(){
