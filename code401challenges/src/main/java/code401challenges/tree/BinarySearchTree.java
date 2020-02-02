@@ -71,8 +71,15 @@ public class BinarySearchTree<T>{
         return list;
     }
 
-    public int getMaxValue(Node<Integer> root) {
+    public int getMaxValue(Node<T> root) throws Exception {
         //add exception
+        if(root.data.getClass().getName() != "java.lang.Integer") {
+            throw new Exception("tree data type must be integers");
+        }
+        if(root == null) {
+            throw new Exception("tree must have some value");
+        }
+        System.out.println("root.data.getClass().getName() = " + root.data.getClass().getName());
         Queue<Node> queue = new Queue<Node>();
         int max = MIN_VALUE;
         if(root != null){
