@@ -51,6 +51,7 @@ public class BinarySearchTree<T>{
     }
 
     public ArrayList<T> breadthFirst(Node<T> root) {
+
         Queue<Node> queue = new Queue<Node>();
         if(root != null){
             queue.enqueue(root);
