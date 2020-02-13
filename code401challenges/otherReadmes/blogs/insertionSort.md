@@ -42,6 +42,14 @@ Sixth element is smaller than fourth element. So, fifth element is replaced by f
 is changed to third index. Sixth element is less than third element. So, third element is moved up and replaces fourth 
 element value. Again, third index variable is changed to second index. Now, sixth is not smaller than second. 
 
+## Efficiency
+
+Time: O(n^2) 
+
+Space: O(1)
+
+
+
 
 
 
