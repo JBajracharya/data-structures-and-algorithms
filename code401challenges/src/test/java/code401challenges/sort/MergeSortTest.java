@@ -8,7 +8,7 @@ public class MergeSortTest {
 
     @Test
     public void testMergeSort() {
-        int[] arr = {8,4,23,42,16,15, 12};
+        int[] arr = {8,4,23,42,16,15};
         MergeSort.mergeSort(arr);
         int[] expected = {4, 8, 12, 15, 16, 23, 42};
         assertArrayEquals(expected, arr);
