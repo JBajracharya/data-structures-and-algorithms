@@ -8,7 +8,7 @@ public class MergeSortTest {
 
     @Test
     public void testMergeSort() {
-        int[] arr = {8,4,23,42,16,15};
+        int[] arr = {8,4,23,42,16,15, 12};
         MergeSort.mergeSort(arr);
         int[] expected = {4, 8, 12, 15, 16, 23, 42};
         assertArrayEquals(expected, arr);
@@ -25,7 +25,7 @@ public class MergeSortTest {
         assertArrayEquals(expected, arr);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public  void testEmptyArray() {
         int[] emptyArray = {};
         MergeSort.mergeSort(emptyArray);
