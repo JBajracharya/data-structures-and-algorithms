@@ -1,8 +1,8 @@
 package code401challenges.sort;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
+
 
 public class MergeSortTest {
 
@@ -29,6 +29,6 @@ public class MergeSortTest {
     public  void testEmptyArray() {
         int[] emptyArray = {};
         MergeSort.mergeSort(emptyArray);
-        String expected = "Cannot Sort! Array is empty";
+
     }
 }
