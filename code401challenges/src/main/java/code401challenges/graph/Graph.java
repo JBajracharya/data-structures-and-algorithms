@@ -3,27 +3,29 @@ package code401challenges.graph;
 import java.util.*;
 
 public class Graph <T> {
-    private Map< T, List<Edge<T>>> map = new HashMap<>();
+    private Map< Node<T>, List<Edge<T>>> map = new HashMap<>();
 
-    public void addNode( T node) {
+    public void addNode( Node<T> node) {
         map.put(node, new LinkedList<Edge<T>>());
     }
 
-    public void addEdge(T source, T destination, boolean bidirectional, int weight) {
+    public void addEdge(Node<T> source, Node<T> destination, boolean bidirectional, int weight) {
         if(!map.containsKey(source)){
             addNode(source);
+            System.out.println("source.value = " + source.value);
         }
         if(!map.containsKey(destination)) {
             addNode(destination);
         }
-        map.get(source).add(new Edge<>(destination, weight));
+        System.out.println("source = " + map.get(source.value));
+        map.get(source).add(new Edge<T>(destination, weight));
 
         if(bidirectional == true) {
-            map.get(destination).add(new Edge<>(source, weight));
+            map.get(destination).add(new Edge<T>(source, weight));
         }
     }
 
-    public Set<T> getNodes() {
+    public Set<Node<T>> getNodes() {
         return map.keySet();
     }
 
