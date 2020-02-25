@@ -3,13 +3,13 @@ package code401challenges.graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
-    int value;
-    List<Edge> list;
+public class Node<T> {
+    T value;
+    List<Edge<T>> edges;
 
-    public Node(int value, List<Edge> list) {
+    public Node(T value) {
         this.value = value;
-        this.list = new ArrayList<>();
+        this.edges = new ArrayList<>();
     }
 
 }
