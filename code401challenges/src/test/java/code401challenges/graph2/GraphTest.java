@@ -1,0 +1,79 @@
+package code401challenges.graph2;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+public class GraphTest {
+    Graph graph = new Graph();
+    Vertix johnVert = graph.addNode("John");
+    Vertix mikeVert = graph.addNode("Mike");
+    Vertix jamesVert = graph.addNode("James");
+    Vertix BillVert = graph.addNode("Bill");
+    Vertix markVert = graph.addNode("Mark");
+    Vertix daneVert = graph.addNode("Dane");
+
+    @Before
+    public void init() {
+        graph.addEdge(johnVert, mikeVert, 10);
+        graph.addEdge(johnVert, jamesVert, 5);
+        graph.addEdge(mikeVert, BillVert, 20);
+        graph.addEdge(mikeVert, markVert, 25);
+        graph.addEdge(daneVert, BillVert, 15);
+        graph.addEdge(daneVert, johnVert, 30);
+    }
+
+    @Test
+    public void testAddNode() {
+        assertTrue(graph.vertices.contains(mikeVert));
+        assertTrue(graph.vertices.contains(jamesVert));
+    }
+
+    @Test
+    public void testAddEdge() {
+        assertEquals("Mike", johnVert.connectingEdges.get(0).connectingVertix.name);
+        assertEquals("James", johnVert.connectingEdges.get(1).connectingVertix.name);
+        assertEquals("Dane", johnVert.connectingEdges.get(2).connectingVertix.name);
+    }
+
+    @Test
+    public void testGetNodes() {
+        int verticesCount = graph.getNodes().size();
+
+        assertEquals(6, verticesCount);
+        assertTrue(graph.getNodes().contains(johnVert));
+    }
+
+    @Test
+    public void getNeighborsTest() {
+        List<Edge> list = graph.getNeighbors(johnVert);
+        StringBuilder actual = new StringBuilder();
+        for (Edge e :
+                list) {
+            System.out.println("e = " + e);
+//           actual.append(e.connectingVertix.name + " ");
+        }
+    }
+
+    @Test
+    public void testGetNeighbors() {
+        List<Edge> list = graph.getNeighbors(johnVert);
+//        StringBuilder actual = new StringBuilder();
+//        for (Edge e :
+//                list) {
+//            System.out.println("e = " + e);
+////           actual.append(e.connectingVertix.name + " ");
+//        }
+
+//        assertEquals("" , actual);
+    }
+
+    @Test
+    public void testSize() {
+
+    }
+}
+

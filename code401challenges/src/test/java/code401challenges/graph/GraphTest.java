@@ -38,13 +38,14 @@ public class GraphTest {
 
 
         graph1.addEdge(node1, node2, true, 30);
-        System.out.println("node1.value = " + node2.value);
+
         graph1.addEdge(node1, node3, true, 20);
         graph1.addEdge(node3, node4, true, 10);
         graph1.addEdge(node4, node5, true, 50);
         graph1.addEdge(node5, node6, true, 30);
         graph1.addEdge(node6, node4, true, 60);
 
+        System.out.println("fdafadfdasfaf" +  graph1.map.get(node1).size());
 //        String actual  = node1.edges.get(0).node.value;
 //        assertEquals(1, actual);
     }
