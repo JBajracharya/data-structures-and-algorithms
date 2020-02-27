@@ -75,6 +75,17 @@ public class GraphTest {
         assertEquals("John Mike James Dane Bill Mark ", actual.toString());
     }
 
+    @Test
+    public void testDepthFirst() {
+        List<Vertix> list = graph.depthFirst(johnVert);
+        StringBuilder actual = new StringBuilder();
+        for (Vertix v :
+                list) {
+            actual.append(v.name + " ");
+        }
+
+        assertEquals("John Dane Bill James Mike Mark ", actual.toString());
+    }
 
 }
 
