@@ -1,53 +1,80 @@
 package code401challenges.graph;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class GraphTest {
+    Graph graph = new Graph();
+    Vertix johnVert = graph.addNode("John");
+    Vertix mikeVert = graph.addNode("Mike");
+    Vertix jamesVert = graph.addNode("James");
+    Vertix BillVert = graph.addNode("Bill");
+    Vertix markVert = graph.addNode("Mark");
+    Vertix daneVert = graph.addNode("Dane");
+
+    @Before
+    public void init() {
+        graph.addEdge(johnVert, mikeVert, 10);
+        graph.addEdge(johnVert, jamesVert, 5);
+        graph.addEdge(mikeVert, BillVert, 20);
+        graph.addEdge(mikeVert, markVert, 25);
+        graph.addEdge(daneVert, BillVert, 15);
+        graph.addEdge(daneVert, johnVert, 30);
+    }
 
     @Test
-    public void addNode() {
-        Graph<Integer> graph = new Graph<>();
-
-        Node<Integer> node = new Node<>(10);
-
-        graph.addNode(node);
-
-        assertEquals("[10]", graph.getNodes().toString());
+    public void testAddNode() {
+        assertTrue(graph.vertices.contains(mikeVert));
+        assertTrue(graph.vertices.contains(jamesVert));
     }
 
     @Test
     public void testAddEdge() {
-        Graph<String> graph1 = new Graph<>();
+        assertEquals("Mike", johnVert.connectingEdges.get(0).connectingVertix.name);
+        assertEquals("James", johnVert.connectingEdges.get(1).connectingVertix.name);
+        assertEquals("Dane", johnVert.connectingEdges.get(2).connectingVertix.name);
+    }
 
-        Node<String> node1 = new Node<>("John");
-        Node<String> node2 = new Node<>("Mike");
-        Node<String> node3 = new Node<>("Ron");
-        Node<String> node4 = new Node<>("Bell");
-        Node<String> node5 = new Node<>("Ash");
-        Node<String> node6 = new Node<>("Jay");
+    @Test
+    public void testGetNodes() {
+        int verticesCount = graph.getNodes().size();
 
-        graph1.addNode(node1);
-        graph1.addNode(node2);
-        graph1.addNode(node3);
-        graph1.addNode(node4);
-        graph1.addNode(node5);
-        graph1.addNode(node6);
+        assertEquals(6, verticesCount);
+        assertTrue(graph.getNodes().contains(johnVert));
+    }
 
+    @Test
+    public void getNeighborsTest() {
+        List<Edge> list = graph.getNeighbors(johnVert);
+        StringBuilder actual = new StringBuilder();
+        for (Edge e :
+                list) {
+           actual.append(e.connectingVertix.name + " ");
+        }
+//        System.out.println("e = " + actual);
+        assertEquals("Mike James Dane ", actual.toString());
+    }
 
+    @Test
+    public void testSize() {
 
-        graph1.addEdge(node1, node2, true, 30);
-
-        graph1.addEdge(node1, node3, true, 20);
-        graph1.addEdge(node3, node4, true, 10);
-        graph1.addEdge(node4, node5, true, 50);
-        graph1.addEdge(node5, node6, true, 30);
-        graph1.addEdge(node6, node4, true, 60);
-
-        System.out.println("fdafadfdasfaf" +  graph1.map.get(node1).size());
-//        String actual  = node1.edges.get(0).node.value;
-//        assertEquals(1, actual);
     }
     
+    @Test
+    public void testBreadthFirst(){
+        List<Vertix> list = graph.breadthFirst(johnVert);
+        StringBuilder actual = new StringBuilder();
+        for (Vertix v :
+                list) {
+            actual.append(v.name + " ");
+        }
+        assertEquals("John Mike James Dane Bill Mark ", actual.toString());
+    }
+
+
 }
+

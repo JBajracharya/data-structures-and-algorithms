@@ -2,45 +2,53 @@ package code401challenges.graph;
 
 import java.util.*;
 
-public class Graph <T> {
-    public Map< Node<T>, List<Edge<T>>> map = new HashMap<>();
+public class Graph {
+    Set<Vertix> vertices;
 
-    public void addNode( Node<T> node) {
-        map.put(node, new LinkedList<Edge<T>>());
+    public Graph() {
+        this.vertices = new HashSet<>();
     }
 
-    public void addEdge(Node<T> source, Node<T> destination, boolean bidirectional, int weight) {
+    public Vertix addNode(String name) {
+        Vertix vertix = new Vertix(name);
+        vertices.add(vertix);
+        return vertix;
+    }
 
-//        System.out.println("map.size() = " + map.keySet().toString());
-//        System.out.println("map.get(source.value) = " + map.get(source));
-        map.get(source).add(new Edge<T>(destination, weight));
-//        System.out.println("map.get(source.value) = " + map.get(source));
+    public void addEdge(Vertix source, Vertix destination, int weight) {
+        source.connectingEdges.add(new Edge(weight, destination));
+        destination.connectingEdges.add(new Edge(weight,source));
+    }
+    
+    public Set<Vertix> getNodes() {
+        return vertices;
+    }
 
+    public List<Edge> getNeighbors(Vertix vertix) {
+//        System.out.println("vertix.connectingEdges.toString() = " + vertix.connectingEdges.toString());
+        return vertix.connectingEdges;
+    }
 
-        if(!map.containsKey(source.value)){
-            addNode(source);
-//            System.out.println("source.value = " + source.value);
+    public List<Vertix> breadthFirst(Vertix vertix) {
+        Set<Vertix> seenBefore = new HashSet<>();
+        Queue<Vertix> traversalQueue = new LinkedList<>();
+        List<Vertix> result = new LinkedList<>();
 
+        traversalQueue.add(vertix);
+        seenBefore.add(vertix);
+
+        while (!traversalQueue.isEmpty()) {
+            Vertix currentVertix = traversalQueue.remove();
+
+            for(Edge edge: currentVertix.connectingEdges) {
+                if(!seenBefore.contains(edge.connectingVertix)) {
+                    seenBefore.add(edge.connectingVertix);
+                    traversalQueue.add(edge.connectingVertix);
+                }
+            }
+            result.add(currentVertix);
         }
-        if(!map.containsKey(destination.value)) {
-            addNode(destination);
-        }
-        System.out.println("source = " + map.get(source));
-
-        if(bidirectional == true) {
-            map.get(destination).add(new Edge<T>(source, weight));
-        }
+        return result;
     }
 
-    public Set<Node<T>> getNodes() {
-        return map.keySet();
-    }
-
-    public List<Edge<T>> getNeighbors(T node) {
-        return map.get(node);
-    }
-
-    public int size() {
-        return map.size();
-    }
 }
