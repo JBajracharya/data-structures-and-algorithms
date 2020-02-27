@@ -1,13 +1,27 @@
 package code401challenges.graph;
 
-public class Edge<T> {
-    Node<T> node;
+public class Edge {
     int weight;
+    Vertix connectingVertix;
 
-    public Edge(Node<T> node, int weight) {
-        this.node = node;
+    public Edge(int weight, Vertix connectingVertix) {
         this.weight = weight;
-
+        this.connectingVertix = connectingVertix;
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Vertix getConnectingVertix() {
+        return connectingVertix;
+    }
+
+    public void setConnectingVertix(Vertix connectingVertix) {
+        this.connectingVertix = connectingVertix;
+    }
 }
