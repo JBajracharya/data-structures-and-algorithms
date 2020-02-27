@@ -51,4 +51,27 @@ public class Graph {
         return result;
     }
 
+    public List<Vertix> depthFirst(Vertix vertix) {
+        Set<Vertix> seenBefore = new HashSet<>();
+        LinkedList<Vertix> linkedList = new LinkedList<>();
+        List<Vertix> result = new LinkedList<>();
+
+        linkedList.add(vertix);
+        seenBefore.add(vertix);
+
+        while (!linkedList.isEmpty()) {
+            Vertix currentVertix = linkedList.remove();
+
+            for(Edge edge: currentVertix.connectingEdges) {
+                if(!seenBefore.contains(edge.connectingVertix)) {
+                    seenBefore.add(edge.connectingVertix);
+                    linkedList.addFirst(edge.connectingVertix);
+                }
+            }
+
+            result.add(currentVertix);
+        }
+        return result;
+    }
+
 }
