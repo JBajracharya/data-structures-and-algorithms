@@ -27,6 +27,15 @@ public class GetEdgeTest {
         Vertix narniaVer = graph.addNode("narnia");
     }
 
+    @Test
+    public void emptyGraph() {
+        Graph emptyGraph = new Graph();
+        String[] route = {"pandora", "naboo"};
+        String actual = GetEdge.getDirectFlight(emptyGraph, route);
+
+        assertEquals("False, $0", actual);
+    }
+
 
     @Test
     public void getEdges() {
