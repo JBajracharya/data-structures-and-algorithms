@@ -40,6 +40,19 @@ public class GraphTest {
     }
 
     @Test
+    public void emptyGraph() {
+        Graph emptyGraph = new Graph();
+        assertNull(emptyGraph.getNodes());
+    }
+
+    @Test
+    public void testEmptyEdges() {
+        Graph noEdge = new Graph();
+        Vertix vertix = noEdge.addNode("John");
+        assertNull(noEdge.getNeighbors(vertix));
+    }
+
+    @Test
     public void testGetNodes() {
         int verticesCount = graph.getNodes().size();
 
@@ -61,7 +74,7 @@ public class GraphTest {
 
     @Test
     public void testSize() {
-
+        assertEquals(6, graph.size());
     }
     
     @Test
