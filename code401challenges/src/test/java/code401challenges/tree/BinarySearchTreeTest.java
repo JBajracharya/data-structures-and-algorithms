@@ -58,7 +58,7 @@ public class BinarySearchTreeTest {
     @Test
     public void testInOrder() {
         ArrayList<Integer> list = searchTree.inOrder(tree.root);
-        assertEquals("[10, 5, 15, 16, 20, 30]", list.toString());
+        assertEquals("[5, 10, 15, 16, 20, 30]", list.toString());
     }
 
     @Test

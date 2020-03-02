@@ -24,9 +24,9 @@ public class BinarySearchTree<T>{
 
     public ArrayList<T> inOrder(Node<T> node) {
         if(node != null) {
-            preOrder(node.left);
+            inOrder(node.left);
             list.add(node.data);
-            preOrder(node.right);
+            inOrder(node.right);
         }
         return list;
     }
