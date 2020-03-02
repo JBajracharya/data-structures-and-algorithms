@@ -21,12 +21,24 @@ public class Graph {
     }
     
     public Set<Vertix> getNodes() {
-        return vertices;
+        if(vertices.size() > 0) {
+            return vertices;
+        } else {
+            return null;
+        }
     }
 
     public List<Edge> getNeighbors(Vertix vertix) {
 //        System.out.println("vertix.connectingEdges.toString() = " + vertix.connectingEdges.toString());
-        return vertix.connectingEdges;
+        if(vertix.connectingEdges.size() > 0) {
+            return vertix.connectingEdges;
+        } else {
+            return null;
+        }
+    }
+
+    public int size() {
+        return vertices.size();
     }
 
     public List<Vertix> breadthFirst(Vertix vertix) {
