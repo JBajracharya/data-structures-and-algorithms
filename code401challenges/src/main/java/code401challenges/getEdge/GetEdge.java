@@ -11,6 +11,9 @@ public class GetEdge {
         Set<Vertix> allCities = routes.getNodes();
         int fare = 0;
         String result = "False, $0";
+        if(allCities == null) {
+            return result;
+        }
         for(int i = 0; i < cityNames.length - 1; i++) {
             for (Vertix city :
                     allCities) {
